@@ -1,7 +1,12 @@
 import "./App.css";
+import CheckerBoard from "./components/CheckerBoard";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <CheckerBoard />
+    </>
+  );
 }
 
 export default App;
