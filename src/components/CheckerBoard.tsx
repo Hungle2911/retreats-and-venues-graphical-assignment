@@ -1,16 +1,17 @@
+import { useState } from "react";
 import ChessSquare from "./ChessSquare";
+import { initializeBoard } from "../utils/initializeBoard";
 
 const CheckerBoard = () => {
-  const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
-  const ranks = [8, 7, 6, 5, 4, 3, 2, 1];
+  const [board, setBoard] = useState<[][]>(initializeBoard());
 
   return (
     <div className="inline-block border border-gray-800">
-      {ranks.map((rank, rankIndex) => (
-        <div key={rank} className="flex">
-          {files.map((file, fileIndex) => {
-            const position = `${file}${rank}`;
-            const isBlack = (rankIndex + fileIndex) % 2 === 1;
+      {board.map((row, rowIndex) => (
+        <div key={rowIndex} className="flex">
+          {row.map((col, colIndex) => {
+            const position = `${rowIndex}${colIndex}`;
+            const isBlack = (rowIndex + colIndex) % 2 === 1;
 
             return <ChessSquare key={position} isBlack={isBlack} />;
           })}
